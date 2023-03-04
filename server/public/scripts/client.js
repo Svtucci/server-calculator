@@ -35,7 +35,7 @@ function calculate (event) {
 
     if (operator === "add") {
         result = firstNum + secondNum;
-    } else if (operator === "subtract") {
+    } else if (operator === "sub") {
         result = firstNum - secondNum;
     } else if (operator === "mult") {
         result = firstNum * secondNum; 
