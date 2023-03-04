@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.use(express.static('server/public'));
 
-
+let results = [];
 
 
 
