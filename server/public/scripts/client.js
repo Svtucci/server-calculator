@@ -39,7 +39,7 @@ function calculate (event) {
     console.log(inputsForServer);
     axios.post('/inputs', inputsForServer).then((response) => {
         console.log(response);
-        getResults()
+        getInputs()
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.'); 
@@ -61,7 +61,7 @@ function calculate (event) {
 
 // Function for taking results from /results and posting it to DOM
  
-function getResults () {
+function getInputs () {
     axios.get('/inputs').then((response) => {
         console.log(response);
         let resultsFromServer = response.data; 
@@ -69,7 +69,7 @@ function getResults () {
         contentDiv.innerHTML= '';
         for (let results of resultsFromServer) {
             contentDiv.innerHTML += `
-            <p>${results.firstNumber} ${results.operator} ${results.secondNumber}</p> 
+            <p>${results.firstNumber} ${results.operator} ${results.secondNumber} = </p> 
             `
         }
     }).catch((error) => {
@@ -78,3 +78,14 @@ function getResults () {
     });
 };
 
+// function getResult () {
+//     axios.get('/calculation').then((response) => {
+//         console.log(response);
+//         let calculationFromServer = response.data;
+//         let contentDiv = document.querySelector('#result');
+//         contentDiv.innerHTML='';
+//         contentDiv.innerHTML += `
+//         <p> ${}
+//         `
+//     })
+// }

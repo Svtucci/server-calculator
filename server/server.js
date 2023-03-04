@@ -18,7 +18,6 @@ let inputsArray = [
 ]; 
 
 
-
 // sends results array to get request on client
 //localhost:5001/results
 app.get('/inputs', (req, res) => {
@@ -33,7 +32,47 @@ app.post('/inputs', (req, res) => {
     let inputToAdd = req.body;
     inputsArray.push(inputToAdd);
     res.sendStatus(201); 
-})
+});
+
+
+// let resultArray = [
+//     {
+
+//     }
+// ];
+
+// app.post('/calculation', (req, res) => {
+//     console.log('POST Resuest made for /calculations');
+//     console.log(req.body); 
+//  if (operator === "add") {
+//         result = firstNum + secondNum;
+//     } else if (operator === "sub") {
+//         result = firstNum - secondNum;
+//     } else if (operator === "mult") {
+//         result = firstNum * secondNum; 
+//     } else if (operator === "div") {
+//         result = firstNum / secondNum;
+//     }
+//     console.log(results)
+//     resultArray,push(result); 
+// })
+
+
+
+
+// //beginning of transfer to server side calculation
+// app.post('/calculate', (req, res) => {
+//     // transfer local calculator logic here
+//     let numberData = req.body;
+//     let numberOne = Number(data.firstNumber);
+//     let numberTwo = Number(data.secondNumber);
+//     let operator = data.operator;
+// });
+
+
+
+
+
 
 
 //PUT REQUEST UPDATES INFO
@@ -58,16 +97,6 @@ app.get('/inputs', (req, res) => {
 });
 
 
-//beginning of transfer to server side calculation
-app.post('/calculate', (req, res) => {
-    // transfer local calculator logic here
-    let numberData = req.body;
-    let numberOne = Number(data.firstNumber);
-    let numberTwo = Number(data.secondNumber);
-    let operator = data.operator;
-
-
-});
 
 
 
