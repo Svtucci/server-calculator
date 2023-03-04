@@ -18,10 +18,10 @@
     <form onSubmit="calculate(event)"> <!--Going to look up different ways to setup the buttons-->
         <input type="number" id="firstNumber"></label>
         <select id="operator" name="operator">
-            <option value="add">+</option>
-            <option value="sub">-</option>
-            <option value="mult">*</option>
-            <option value="div">/</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
         </select>
         <input type="number" id="secondNumber"></label>
         <button type="submit">=</button>
@@ -30,9 +30,9 @@
     <div id="results">
         <h2>RESULTS</h2>
     </div>
-
+    <h2>History</h2>
     <div id="history">
-        <h2>History</h2>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

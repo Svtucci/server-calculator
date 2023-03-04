@@ -39,21 +39,22 @@ function calculate (event) {
     console.log(inputsForServer);
     axios.post('/inputs', inputsForServer).then((response) => {
         console.log(response);
+        getResults()
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.'); 
     })
 
-    if (operator === "add") {
-        result = firstNum + secondNum;
-    } else if (operator === "sub") {
-        result = firstNum - secondNum;
-    } else if (operator === "mult") {
-        result = firstNum * secondNum; 
-    } else if (operator === "div") {
-        result = firstNum / secondNum;
-    }
-    console.log(result);
+    // if (operator === "add") {
+    //     result = firstNum + secondNum;
+    // } else if (operator === "sub") {
+    //     result = firstNum - secondNum;
+    // } else if (operator === "mult") {
+    //     result = firstNum * secondNum; 
+    // } else if (operator === "div") {
+    //     result = firstNum / secondNum;
+    // }
+    // console.log(result);
 
     // results.innerHTML = `<p><p>${result}`
 }; 
@@ -65,9 +66,10 @@ function getResults () {
         console.log(response);
         let resultsFromServer = response.data; 
         let contentDiv = document.querySelector('#history');
+        contentDiv.innerHTML= '';
         for (let results of resultsFromServer) {
             contentDiv.innerHTML += `
-            <p>${results.firstNumber} ${results.operator} ${results.secondNumber},</p> 
+            <p>${results.firstNumber} ${results.operator} ${results.secondNumber}</p> 
             `
         }
     }).catch((error) => {
