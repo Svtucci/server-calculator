@@ -9,16 +9,11 @@ app.use(express.static('server/public'));
 
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
-let inputsArray = [
-    {
-        firstNumber: 1,
-        secondNumber: 2,
-        operator: '+' , 
-    }
-]; 
+let inputsArray = []
+ 
 
 
-// sends results array to get request on client
+// sends inputsarray to get request on client
 //localhost:5001/results
 app.get('/inputs', (req, res) => {
     console.log('GET Request made for /inputs');
@@ -30,9 +25,63 @@ app.post('/inputs', (req, res) => {
     console.log('POST Request made for /inputs');
     console.log(req.body);
     let inputToAdd = req.body;
+
+    let operator = inputToAdd.operator
+    let number1 = inputToAdd.firstNumber;
+    let number2 = inputToAdd.secondNumber;
+    let result; 
+
+    if (operator === "add") {
+        result = number1 + number2;
+    } else if (operator === "sub") {
+        result = number1 - number2; 
+    } else if (operator === "mult") {
+        result = number1 * number2;
+    } else if (operator === "div") {
+        result = number1 / number2;
+    }
+
+
     inputsArray.push(inputToAdd);
-    res.sendStatus(201); 
+    res.sendStatus(201);     
 });
+
+//sends result to get request on client
+app.get('/inputs', (req, res) => {
+    res.send({result: result});
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on: ${PORT}`); 
+})
+
+
+
+
+
+
+
+
+
+
+// app.get('/calculate', (req, res) => {
+//     let numberOne = inputsArray.firstNumber;
+//     let numberTwo = inputsArray.secondNumber;
+//     let operator =  inputsArray.operator;
+
+//     let result; 
+
+//     if (operator === "add") {
+//         result = numberOne + numberTwo;
+//     } else if (operator === "sub") {
+//         result = numberOne - numberTwo;
+//     } else if (operator === "mult") {
+//         result = numberOne * numberTwo;
+//     } else if (operator === "div") {
+//         result = numberOne / numberTwo;
+//     }
+//     console.log(result);
+// })
 
 
 // let resultArray = [
@@ -86,29 +135,3 @@ let calcObjects = {
     operator: operator,
 };
 */
-
-
-
-
-
-//sends result to get request on client
-app.get('/inputs', (req, res) => {
-    res.send({result: result});
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(PORT, () => {
-    console.log(`Server running on: ${PORT}`); 
-})

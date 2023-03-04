@@ -39,7 +39,7 @@ function calculate (event) {
     console.log(inputsForServer);
     axios.post('/inputs', inputsForServer).then((response) => {
         console.log(response);
-        getInputs()
+        getInputs();
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.'); 
@@ -69,9 +69,10 @@ function getInputs () {
         contentDiv.innerHTML= '';
         for (let results of resultsFromServer) {
             contentDiv.innerHTML += `
-            <p>${results.firstNumber} ${results.operator} ${results.secondNumber} = </p> 
+            <p>${results.firstNumber} ${results.operator} ${results.secondNumber} = ${results.result} </p> 
             `
         }
+        // getCalculate()
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.')
@@ -87,5 +88,12 @@ function getInputs () {
 //         contentDiv.innerHTML += `
 //         <p> ${}
 //         `
+//     })
+// }
+
+// function getCalculate() {
+//     axios.get('/calculate').then((response) => {
+//         console.log(response);
+        
 //     })
 // }
