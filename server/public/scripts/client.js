@@ -28,10 +28,16 @@ function calculate (event) {
     let firstNum = Number(document.querySelector('#firstNumber').value);
     let secondNum = Number(document.querySelector('#secondNumber').value);
     console.log(firstNum, secondNum);
-    
     let operator = document.getElementById('operator').value;
-
     console.log(operator);
+
+    // have to take all inputs and put into an object
+    let calcObjects = {
+        firstNumber: firstNum,
+        secondNumber: secondNum,
+        operator: operator,
+    };
+    console.log(calcObjects);
 
     if (operator === "add") {
         result = firstNum + secondNum;
