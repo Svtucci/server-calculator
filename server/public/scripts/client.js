@@ -43,4 +43,6 @@ function calculate (event) {
         result = firstNum / secondNum;
     }
     console.log(result);
+
+    results.innerHTML = `<p><p>${result}`
 }; 
