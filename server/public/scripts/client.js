@@ -52,3 +52,13 @@ function calculate (event) {
 
     results.innerHTML = `<p><p>${result}`
 }; 
+
+// Function for taking results from /results and posting it to DOM
+ 
+function getResults () {
+    axios.get('/results').then((response) => {
+        console.log(response);
+    })
+};
+
+getResults(); 
