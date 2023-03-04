@@ -9,7 +9,7 @@ app.use(express.static('server/public'));
 
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
-let resultsArray = [
+let inputsArray = [
     {
         firstNumber: 1,
         secondNumber: 2,
@@ -17,14 +17,24 @@ let resultsArray = [
     }
 ]; 
 
+
+
 // sends results array to get request on client
 //localhost:5001/results
-app.get('/results', (req, res) => {
-    console.log('GET Request made for /results');
-    res.send(resultsArray);
+app.get('/inputs', (req, res) => {
+    console.log('GET Request made for /inputs');
+    res.send(inputsArray);
 });
 
 // POST REQUEST SAVES USER INFO 
+app.post('/inputs', (req, res) => {
+    console.log('POST Request made for /inputs');
+    console.log(req.body);
+    let inputToAdd = req.body;
+    inputsArray.push(inputToAdd);
+    res.sendStatus(201); 
+})
+
 
 //PUT REQUEST UPDATES INFO
 
@@ -43,7 +53,7 @@ let calcObjects = {
 
 
 //sends result to get request on client
-app.get('/result', (req, res) => {
+app.get('/inputs', (req, res) => {
     res.send({result: result});
 });
 

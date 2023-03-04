@@ -27,17 +27,22 @@ function calculate (event) {
     event.preventDefault();
     let firstNum = Number(document.querySelector('#firstNumber').value);
     let secondNum = Number(document.querySelector('#secondNumber').value);
-    console.log(firstNum, secondNum);
     let operator = document.getElementById('operator').value;
-    console.log(operator);
+    console.log('First:', firstNum, 'Second:', secondNum, 'Operator:', operator);
 
     // have to take all inputs and put into an object
-    let calcObjects = {
+    let inputsForServer = {
         firstNumber: firstNum,
         secondNumber: secondNum,
         operator: operator,
     };
-    console.log(calcObjects);
+    console.log(inputsForServer);
+    axios.post('/inputs', inputsForServer).then((response) => {
+        console.log(response);
+    }).catch((error) => {
+        console.log(error);
+        alert('Something went wrong.'); 
+    })
 
     if (operator === "add") {
         result = firstNum + secondNum;
@@ -50,15 +55,24 @@ function calculate (event) {
     }
     console.log(result);
 
-    results.innerHTML = `<p><p>${result}`
+    // results.innerHTML = `<p><p>${result}`
 }; 
 
 // Function for taking results from /results and posting it to DOM
  
 function getResults () {
-    axios.get('/results').then((response) => {
+    axios.get('/inputs').then((response) => {
         console.log(response);
-    })
+        let resultsFromServer = response.data; 
+        let contentDiv = document.querySelector('#history');
+        for (let results of resultsFromServer) {
+            contentDiv.innerHTML += `
+            <p>${results.firstNumber} ${results.operator} ${results.secondNumber},</p> 
+            `
+        }
+    }).catch((error) => {
+        console.log(error);
+        alert('Something went wrong.')
+    });
 };
 
-getResults(); 
