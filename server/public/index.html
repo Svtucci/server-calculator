@@ -15,19 +15,24 @@
 
 
 
-    <form onSubmit="calculate(event)">
+    <form onSubmit="calculate(event)"> <!--Going to look up different ways to setup the buttons-->
         <input type="numOne" id="firstNumber"></label>
-        <button type="button" id="add">+</button>
-        <button type="button" id="sub">-</button>
-        <button type="button" id="mult">*</button>
-        <button type="button" id="div">/</button>
+        <select id="operator" name="operator">
+            <option value="add">+</option>
+            <option value="sub">-</option>
+            <option value="mult">*</option>
+            <option value="div">/</option>
+        </select>
         <input type="numTwo" id="secondNumber"></label>
         <button type="submit">=</button>
-        
     </form>
 
-    <div id="result">
+    <div id="results">
         
+    </div>
+
+    <div id="history">
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
