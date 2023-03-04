@@ -8,5 +8,16 @@ function calculate (event) {
     let secondNum = Number(document.querySelector('#secondNumber').value);
     console.log(firstNum, secondNum);
 
-    
+    let operator = document.getElementById('operator').value;
+
+    if (operator === "add") {
+        result = firstNum + secondNum;
+    } else if (operator === "subtract") {
+        result = firstNum - secondNum;
+    } else if (operator === "mult") {
+        result = firstNum * secondNum; 
+    } else if (operator === "div") {
+        result = firstNum / secondNum;
+    }
+    document.getElementById('result').innerHTML = result:
 }; 
