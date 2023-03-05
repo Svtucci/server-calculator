@@ -5,6 +5,7 @@ getInputs();
 function getInputs () {
     axios.get('/inputs').then((response) => {
         console.log(response);
+        document.querySelector('#calculator').reset()
         let inputsFromServer = response.data; 
         let contentDiv = document.querySelector('#history');
         contentDiv.innerHTML= '';
@@ -29,7 +30,7 @@ function calculate(event) {
     let secondNum = Number(document.querySelector('#secondNumber').value);
     let operator = document.getElementById('operator').value;
     console.log('First:', firstNum, 'Second:', secondNum, 'Operator:', operator);
-
+    
     // have to take all inputs and put into an object
     let inputsForServer = {
         firstNumber: firstNum,
@@ -46,6 +47,9 @@ function calculate(event) {
     })
 }
 
+function clearInputs () {
+
+}
 
 
 
@@ -101,8 +105,4 @@ function calculate(event) {
     // }
     // console.log(result);
 
-    // results.innerHTML = `<p><p>${result}`
-
-
-// Function for taking results from /results and posting it to DOM
- 
+    // results.innerHTML = `<p><p>${result}`()

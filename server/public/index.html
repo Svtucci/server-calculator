@@ -15,7 +15,7 @@
 
 
 
-    <form onSubmit="calculate(event)"> <!--Going to look up different ways to setup the buttons-->
+    <form id="calculator" onSubmit="calculate(event)"> <!--Going to look up different ways to setup the buttons-->
         <input type="number" id="firstNumber"></label>
         <select id="operator" name="operator">
             <option value="+">+</option>
@@ -25,6 +25,7 @@
         </select>
         <input type="number" id="secondNumber"></label>
         <button type="submit">=</button>
+        <button type="submit">C</button>
     </form>
     
     <div id="result">
