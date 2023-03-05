@@ -22,30 +22,15 @@ function getInputs () {
 
 function getResult() {
      axios.get('/result').then((response) => {
-        let resultFromServer = response.data;
+        console.log(response.request.readyState);
+        let resultFromServer = response.data.result;
         let resultDiv = document.querySelector('#result');
-        resultDiv.innerHTML += resultFromServer;
+        resultDiv.innerHTML = resultFromServer;
      }).catch((error) => {
         console.log(error);
         alert('Something went wrong')
      })
 }
-
-
-
-
-
-// function getResult () {
-//     axios.get('/calculation').then((response) => {
-//         console.log('Calculation;', response);
-//         let resultFromServer = response.data;
-//         let contentDiv = document.querySelector('#result');
-//         contentDiv.innerHTML +=`
-//         <p> ${resultFromServer} </p>
-//         `
-//     })
-
-// }
 
 function calculate(event) {
     event.preventDefault();
@@ -72,7 +57,17 @@ function calculate(event) {
 }
 
 
+// function getResult () {
+//     axios.get('/calculation').then((response) => {
+//         console.log('Calculation;', response);
+//         let resultFromServer = response.data;
+//         let contentDiv = document.querySelector('#result');
+//         contentDiv.innerHTML +=`
+//         <p> ${resultFromServer} </p>
+//         `
+//     })
 
+// }
 
 
 

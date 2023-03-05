@@ -1,27 +1,23 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5001;
-
 app.use(express.json());
-
 app.use(express.static('server/public'));
-
-
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
 let inputsArray = [];
-let result;
-
+let result; 
 
 // sends inputsarray to get request on client
-//localhost:5001/results
+//localhost:5001/inputs
 app.get('/inputs', (req, res) => {
     console.log('GET Request made for /inputs');
     res.send(inputsArray);
 });
 
 app.get('/result', (req, res) => {
-    res.send({answer: result});
+    console.log('GET request for result');
+    res.send(result);
 })
 
 // POST REQUEST SAVES USER INFO 
@@ -42,7 +38,7 @@ app.post('/inputs', (req, res) => {
     } else if (operator === '/') {
         result = numberOne / numberTwo;
     } else {
-        return; 
+        return;
     }
 
     inputs = {
@@ -50,10 +46,15 @@ app.post('/inputs', (req, res) => {
         operator: operator,
         secondNumber: numberTwo,
         answer: result
-    }
+    };
+
     inputsArray.push(inputs);
     res.sendStatus(201);     
 });
+
+
+
+
 
 // app.post('/calculation', (req, res) => {
 //     let data = req.body
@@ -81,9 +82,9 @@ app.post('/inputs', (req, res) => {
 
 
 // sends result to get request on client
-app.get('/inputs', (req, res) => {
-    res.send({answer: result});
-});
+// app.get('/inputs', (req, res) => {
+//     res.send();
+// });
 
 
 
