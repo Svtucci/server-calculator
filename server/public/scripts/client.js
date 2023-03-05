@@ -5,7 +5,6 @@ getInputs();
 function getInputs () {
     axios.get('/inputs').then((response) => {
         console.log(response);
-        document.querySelector('#calculator').reset()
         let inputsFromServer = response.data; 
         let contentDiv = document.querySelector('#history');
         contentDiv.innerHTML= '';
@@ -19,10 +18,6 @@ function getInputs () {
         alert('Something went wrong.')
     });
 };
-
-
-
-
 
 function calculate(event) {
     event.preventDefault();

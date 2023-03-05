@@ -16,14 +16,13 @@ let inputsArray = [
     operator: '+',
     }
 ];
- 
-
 
 // sends inputsarray to get request on client
 //localhost:5001/results
 app.get('/inputs', (req, res) => {
     console.log('GET Request made for /inputs');
     res.send(inputsArray);
+
 });
 
 // POST REQUEST SAVES USER INFO 
