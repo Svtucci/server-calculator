@@ -9,7 +9,13 @@ app.use(express.static('server/public'));
 
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
-let inputsArray = []
+let inputsArray = [
+    {
+    firstNumber: 5,
+    secondNumber: 2,
+    operator: '+',
+    }
+];
  
 
 
@@ -25,31 +31,14 @@ app.post('/inputs', (req, res) => {
     console.log('POST Request made for /inputs');
     console.log(req.body);
     let inputToAdd = req.body;
-
-    let operator = inputToAdd.operator
-    let number1 = inputToAdd.firstNumber;
-    let number2 = inputToAdd.secondNumber;
-    let result; 
-
-    if (operator === "add") {
-        result = number1 + number2;
-    } else if (operator === "sub") {
-        result = number1 - number2; 
-    } else if (operator === "mult") {
-        result = number1 * number2;
-    } else if (operator === "div") {
-        result = number1 / number2;
-    }
-
-
     inputsArray.push(inputToAdd);
     res.sendStatus(201);     
 });
 
-//sends result to get request on client
-app.get('/inputs', (req, res) => {
-    res.send({result: result});
-});
+// // sends result to get request on client
+// app.get('/inputs', (req, res) => {
+//     res.send({result: result});
+// });
 
 app.listen(PORT, () => {
     console.log(`Server running on: ${PORT}`); 
