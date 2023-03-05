@@ -10,7 +10,7 @@ function getInputs () {
         contentDiv.innerHTML= '';
         for (let inputs of inputsFromServer) {
             contentDiv.innerHTML += `
-            <p>${inputs.firstNumber} ${inputs.operator} ${inputs.secondNumber} = </p> 
+            <p>${inputs.firstNumber} ${inputs.operator} ${inputs.secondNumber} = ${inputs.result} </p> 
             `
         }
     }).catch((error) => {
@@ -18,6 +18,18 @@ function getInputs () {
         alert('Something went wrong.')
     });
 };
+
+// function getResult () {
+//     axios.get('/calculation').then((response) => {
+//         console.log('Calculation;', response);
+//         let resultFromServer = response.data;
+//         let contentDiv = document.querySelector('#result');
+//         contentDiv.innerHTML +=`
+//         <p> ${resultFromServer} </p>
+//         `
+//     })
+
+// }
 
 function calculate(event) {
     event.preventDefault();
@@ -36,15 +48,13 @@ function calculate(event) {
     axios.post('/inputs', inputsForServer).then((response) => {
         console.log(response);
         getInputs()
+        // getResult()
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.'); 
     })
 }
 
-function clearInputs () {
-
-}
 
 
 

@@ -14,16 +14,24 @@ let inputsArray = [
     firstNumber: 5,
     secondNumber: 2,
     operator: '+',
+    
     }
 ];
+
+let result;
+
 
 // sends inputsarray to get request on client
 //localhost:5001/results
 app.get('/inputs', (req, res) => {
     console.log('GET Request made for /inputs');
     res.send(inputsArray);
-
 });
+
+// app.get('/calculation', (req, res) => {
+//     console.log('GET Request made for /calculation');
+//     res.send(inputsArray.result)
+// })
 
 // POST REQUEST SAVES USER INFO 
 app.post('/inputs', (req, res) => {
@@ -33,6 +41,25 @@ app.post('/inputs', (req, res) => {
     inputsArray.push(inputToAdd);
     res.sendStatus(201);     
 });
+
+// app.post('/calculation', (req, res) => {
+//     let data = req.body
+//     let operator = data.operator;
+//     let firstNum = Number(data.numberOne);
+//     let secondNum = Number(data.numberTwo);
+
+//     if (operator === "add") {
+//         result = firstNum + secondNum;
+//     } else if (operator === "sub") {
+//         result = firstNum - secondNum;
+//     } else if (operator === "mult") {
+//         result = firstNum * secondNum; 
+//     } else if (operator === "div") {
+//         result = firstNum / secondNum;
+//     }
+// }); 
+
+
 
 // // sends result to get request on client
 // app.get('/inputs', (req, res) => {
