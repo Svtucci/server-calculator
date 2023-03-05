@@ -10,7 +10,7 @@ function getInputs () {
         contentDiv.innerHTML= '';
         for (let inputs of inputsFromServer) {
             contentDiv.innerHTML += `
-            <p>${inputs.firstNumber} ${inputs.operator} ${inputs.secondNumber} = ${inputs.result} </p> 
+            <p>${inputs.firstNumber} ${inputs.operator} ${inputs.secondNumber} = ${inputs.answer} </p> 
             `
         }
     }).catch((error) => {

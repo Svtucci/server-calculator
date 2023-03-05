@@ -9,15 +9,7 @@ app.use(express.static('server/public'));
 
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
-let inputsArray = [
-    {
-    firstNumber: 5,
-    secondNumber: 2,
-    operator: '+',
-    
-    }
-];
-
+let inputsArray = [];
 let result;
 
 
@@ -28,17 +20,39 @@ app.get('/inputs', (req, res) => {
     res.send(inputsArray);
 });
 
-// app.get('/calculation', (req, res) => {
-//     console.log('GET Request made for /calculation');
-//     res.send(inputsArray.result)
-// })
+app.get('/result', (req, res) => {
+    res.send({result: result});
+})
 
 // POST REQUEST SAVES USER INFO 
 app.post('/inputs', (req, res) => {
     console.log('POST Request made for /inputs');
     console.log(req.body);
     let inputToAdd = req.body;
-    inputsArray.push(inputToAdd);
+    let numberOne = Number(inputToAdd.firstNumber);
+    let numberTwo = Number(inputToAdd.secondNumber);
+    let operator = inputToAdd.operator
+
+    if (operator === '+') {
+        result = numberOne + numberTwo;
+    } else if (operator === '-') {
+        result = numberOne - numberTwo;
+    } else if (operator === '*') {
+        result = numberOne * numberTwo;
+    } else if (operator === '/') {
+        result = numberOne / numberTwo;
+    } else {
+        return; 
+    }
+
+    inputs = {
+        firstNumber: numberOne,
+        operator: operator,
+        secondNumber: numberTwo,
+        answer: result
+
+    }
+    inputsArray.push(inputs);
     res.sendStatus(201);     
 });
 
@@ -56,8 +70,14 @@ app.post('/inputs', (req, res) => {
 //         result = firstNum * secondNum; 
 //     } else if (operator === "div") {
 //         result = firstNum / secondNum;
-//     }
-// }); 
+//     } return
+//      mathInputs = {
+//                 firstNumber
+//                 secondNumber
+//                 operator:
+//                 answer: result
+// }
+// // }); 
 
 
 
