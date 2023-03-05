@@ -13,11 +13,27 @@ function getInputs () {
             <p>${inputs.firstNumber} ${inputs.operator} ${inputs.secondNumber} = ${inputs.answer} </p> 
             `
         }
+        getResult()
     }).catch((error) => {
         console.log(error);
         alert('Something went wrong.')
     });
 };
+
+function getResult() {
+     axios.get('/result').then((response) => {
+        let resultFromServer = response.data;
+        let resultDiv = document.querySelector('#result');
+        resultDiv.innerHTML += resultFromServer;
+     }).catch((error) => {
+        console.log(error);
+        alert('Something went wrong')
+     })
+}
+
+
+
+
 
 // function getResult () {
 //     axios.get('/calculation').then((response) => {

@@ -21,7 +21,7 @@ app.get('/inputs', (req, res) => {
 });
 
 app.get('/result', (req, res) => {
-    res.send({result: result});
+    res.send({answer: result});
 })
 
 // POST REQUEST SAVES USER INFO 
@@ -50,7 +50,6 @@ app.post('/inputs', (req, res) => {
         operator: operator,
         secondNumber: numberTwo,
         answer: result
-
     }
     inputsArray.push(inputs);
     res.sendStatus(201);     
@@ -81,10 +80,10 @@ app.post('/inputs', (req, res) => {
 
 
 
-// // sends result to get request on client
-// app.get('/inputs', (req, res) => {
-//     res.send({result: result});
-// });
+// sends result to get request on client
+app.get('/inputs', (req, res) => {
+    res.send({answer: result});
+});
 
 
 
