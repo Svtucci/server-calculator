@@ -6,7 +6,7 @@ app.use(express.static('server/public'));
 
 // array that will be filled with data from client side, using 1 and 2 for examples to test
 let inputsArray = [];
-let result; 
+let result = 0;
 
 // sends inputsarray to get request on client
 //localhost:5001/inputs
@@ -17,7 +17,7 @@ app.get('/inputs', (req, res) => {
 
 app.get('/result', (req, res) => {
     console.log('GET request for result');
-    res.send(result);
+    res.send({result});
 })
 
 // POST REQUEST SAVES USER INFO 
@@ -52,6 +52,9 @@ app.post('/inputs', (req, res) => {
     res.sendStatus(201);     
 });
 
+app.listen(PORT, () => {
+    console.log(`Server running on: ${PORT}`); 
+})
 
 
 
@@ -94,9 +97,6 @@ app.post('/inputs', (req, res) => {
 
 
 
-app.listen(PORT, () => {
-    console.log(`Server running on: ${PORT}`); 
-})
 
 
 

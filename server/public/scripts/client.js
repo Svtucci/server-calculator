@@ -22,7 +22,6 @@ function getInputs () {
 
 function getResult() {
      axios.get('/result').then((response) => {
-        console.log(response.request.readyState);
         let resultFromServer = response.data.result;
         let resultDiv = document.querySelector('#result');
         resultDiv.innerHTML = resultFromServer;
@@ -30,7 +29,7 @@ function getResult() {
         console.log(error);
         alert('Something went wrong')
      })
-}
+}; 
 
 function calculate(event) {
     event.preventDefault();
@@ -55,6 +54,11 @@ function calculate(event) {
         alert('Something went wrong.'); 
     })
 }
+
+
+
+
+
 
 
 // function getResult () {
